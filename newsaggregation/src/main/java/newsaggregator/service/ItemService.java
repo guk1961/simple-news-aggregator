@@ -24,11 +24,11 @@ public class ItemService {
     }
 
     public List<Item> getItems(int page, Integer size) {
-        return itemRepository.findAll(new PageRequest(page, size, Sort.Direction.DESC, "publishedDate")).getContent();
+        return itemRepository.findAll(PageRequest.of(page, size, Sort.Direction.DESC, "publishedDate")).getContent();
     }
 
     public List<Item> getItems(int page, Integer size, String search) {
-        return itemRepository.findAll(new PageRequest(page, size, Sort.Direction.DESC, "publishedDate")).getContent();
+        return itemRepository.findAll(PageRequest.of(page, size, Sort.Direction.DESC, "publishedDate")).getContent();
     }
 
     public long countMembers() {
@@ -36,7 +36,7 @@ public class ItemService {
     }
 
     public List<Item>  search(String searchText, Integer size, int page) {
-        return itemRepository.findByDescriptionContainsOrTitleContainsAllIgnoreCase(searchText, searchText, new PageRequest(page, size, Sort.Direction.DESC, "publishedDate"));
+        return itemRepository.findByDescriptionContainsOrTitleContainsAllIgnoreCase(searchText, searchText, PageRequest.of(page, size, Sort.Direction.DESC, "publishedDate"));
     }
 
     public int countBySearchPattern(String searchText){

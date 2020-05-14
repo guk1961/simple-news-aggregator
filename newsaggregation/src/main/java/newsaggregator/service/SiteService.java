@@ -88,10 +88,10 @@ public class SiteService {
     }
 
     public Site findOne(int id) {
-        return siteRepository.findOne(id);
+        return siteRepository.getOne(id);
     }
 
     public List<Site>  findAll() {
-        return siteRepository.findAll(new PageRequest(0, 20, Sort.Direction.ASC, "name")).getContent();
+        return siteRepository.findAll(PageRequest.of(0, 20, Sort.Direction.ASC, "name")).getContent();
     }
 }
